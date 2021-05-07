@@ -1,10 +1,11 @@
 import {  useRef, useEffect, useState } from 'react';
 import Image from 'next/image'; 
 import {  usePlayer } from '../../contexts/PlayerContext';
-import styles from './styles.module.scss';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import { convertDurationToTimeString } from '../../utils/convertDurationToTimeString';
+import { PlayerContainer, CurrentEpisode, EmptyPlayer, Progress, SliderDiv, EmptySlider, Buttons } from './styles.module';
+
 
 export function Player() {
 
@@ -67,14 +68,14 @@ export function Player() {
     const episodePlayer = episodeList[currentEpisodeIndex];
 
     return (
-        <div className={styles.playerContainer}>
+        <PlayerContainer>
             <header>
                 <img src="/playing.svg" alt="Tocando agora" />
                 <strong>Tocando agora</strong>
             </header>          
 
             { episodePlayer ? (
-                <div className={styles.currentEpisode}>
+                <CurrentEpisode>
                     <Image 
                         width={392} 
                         height={392} 
@@ -85,18 +86,18 @@ export function Player() {
                     <strong>{episodePlayer.title}</strong>
                     <span>{episodePlayer.members}</span>
 
-                </div>
+                </CurrentEpisode>
             ) : (
-                <div className={styles.emptyPlayer}>
+                <EmptyPlayer>
                     <strong>Selecione um podcast para ouvir</strong>                                
-                </div>  
+                </EmptyPlayer>  
             ) }
 
-            <footer className={!episodePlayer ? styles.empty : ''}>
-                <div className={styles.progress}>
+            <footer className={!episodePlayer ? ".empty" : ''}>
+                <Progress>
                     <span>{convertDurationToTimeString(progress)}</span>
                     
-                    <div className={styles.slider}>
+                    <SliderDiv>
                         { episodePlayer ? (
                             <Slider 
                                 max={episodePlayer.duration}
@@ -107,12 +108,12 @@ export function Player() {
                                 onChange={handleSeek}
                             />
                         ) : (
-                            <div className={styles.emptySlider} />
+                            <EmptySlider />
                         )}
-                    </div>
+                    </SliderDiv>
 
                     <span>{convertDurationToTimeString(episodePlayer?.duration ?? 0)}</span>
-                </div>
+                </Progress>
 
                  { episodePlayer && (
                      <audio 
@@ -127,13 +128,13 @@ export function Player() {
                     />
                  ) } { /* condição && SÓ VAI EXECUTAR OQ ESTÁ APÓS SE A CONDIÇÃO FOR VERDADEIRA */}
 
-                <div className={styles.buttons}>
+                <Buttons>
 
                     <button 
                         type="button" 
                         disabled={!episodePlayer || episodeList.length === 1}
                         onClick={toggleShuffel}
-                        className={isShuffling ? styles.isActive : ''}
+                        className={isShuffling ? "isActive" : ''}
                     >
                         <img src="/shuffle.svg" alt="Embaralhar"/>
                     </button>
@@ -144,7 +145,7 @@ export function Player() {
 
                     <button 
                         type="button" 
-                        className={styles.playButton} 
+                        className="playButton" 
                         disabled={!episodePlayer}
                         onClick={togglePlay}
                     >
@@ -160,12 +161,12 @@ export function Player() {
                         type="button" 
                         disabled={!episodePlayer}
                         onClick={toggleLoop}
-                        className={isLooping ? styles.isActive : ''}
+                        className={isLooping ? "isActive" : ''}
                     >
                         <img src="/repeat.svg" alt="Repetir"/> {/* GERALMENTE UTILIZAMOS OS ICONES DO PACOTE REACT ICONS*/}
                     </button>                    
-                </div>
+                </Buttons>
             </footer>
-        </div>
+        </PlayerContainer>
     );
 }

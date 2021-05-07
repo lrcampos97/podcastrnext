@@ -1,4 +1,6 @@
-.homepage { 
+import styled from 'styled-components';
+
+export const HomePage = styled.div `
     padding:  0 2rem;
     height: calc(100vh - 6.5rem);
     overflow-y: scroll;
@@ -7,9 +9,9 @@
         margin-top: 3rem;
         margin-bottom: 1.5rem;
     }
-}
+`;
 
-.latestEpisodes { 
+export const LatestEpisodes = styled.section `
     ul {
         list-style: none;
         display: grid;
@@ -28,59 +30,6 @@
 
             img {
                 border-radius: 1rem; 
-            }
-
-            .episodeDetails {
-                flex: 1;
-                margin-left: 1rem;
-                
-                a {
-                    display: block;
-                    color: var(--gray-800);
-                    font-family: Lexend, sans-serif;
-                    font-weight: 600;
-                    text-decoration: none;
-                    line-height: 1.4rem;
-
-                    &:hover {
-                        text-decoration: underline;
-                    }
-                }
-                    
-                p {
-                    font-size: 0.875rem;
-                    margin-top: 0.5rem;
-                    max-width: 70%;
-                    white-space: nowrap;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                }
-
-                span { 
-                    display: inline-block;
-                    margin-top: 0.5rem;
-                    font-size: 0.875rem;
-
-                   &:last-child { // pega o último elemento span 
-                    margin-left: 0.5rem;
-                    padding-left: 0.5rem;
-                    position: relative;
-
-                    &::before {
-                        content: "";
-                        width: 4px;
-                        height: 4px;
-                        border-radius: 2px;
-                        background: #DDD;
-                        position: absolute;
-                        left: 0;
-                        top: 50%;
-                        transform: translate(-50%, -50%); // alinhar
-                    }
-
-                   }
-                }
-                      
             }
 
             button { 
@@ -107,11 +56,61 @@
                 }
             }
         }
-
     }
-}
+`;
 
-.allEpisodes {
+export const EpisodeDetails = styled.div `
+    flex: 1;
+    margin-left: 1rem;
+    
+    a {
+        display: block;
+        color: var(--gray-800);
+        font-family: Lexend, sans-serif;
+        font-weight: 600;
+        text-decoration: none;
+        line-height: 1.4rem;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+        
+    p {
+        font-size: 0.875rem;
+        margin-top: 0.5rem;
+        max-width: 70%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    span { 
+        display: inline-block;
+        margin-top: 0.5rem;
+        font-size: 0.875rem;
+
+        &:last-child { // pega o último elemento span 
+            margin-left: 0.5rem;
+            padding-left: 0.5rem;
+            position: relative;
+
+            &::before {
+                content: "";
+                width: 4px;
+                height: 4px;
+                border-radius: 2px;
+                background: #DDD;
+                position: absolute;
+                left: 0;
+                top: 50%;
+                transform: translate(-50%, -50%); // alinhar
+            }
+        }
+    }
+`;
+
+export const AllEpisodes = styled.section `
     padding-bottom: 2rem;
 
     table { 
@@ -140,16 +139,16 @@
         }
 
         a { 
-          color: var(--gray-800);
-          font-family: Lexend, sans-serif;
-          font-weight: 600;
-          text-decoration: none;
-          line-height: 1.4rem;
-          font-size: 1rem;
+        color: var(--gray-800);
+        font-family: Lexend, sans-serif;
+        font-weight: 600;
+        text-decoration: none;
+        line-height: 1.4rem;
+        font-size: 1rem;
 
-          &:hover { 
+        &:hover { 
             text-decoration: underline;
-          }
+        }
         }
 
         button { 
@@ -172,5 +171,4 @@
             }
         }
     }
-}
-
+`;

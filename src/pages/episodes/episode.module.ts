@@ -1,4 +1,6 @@
-.episode {
+import styled from 'styled-components';
+
+export const Episode = styled.div `
     max-width: 45rem;
     padding: 3rem 2rem;
     margin: 0 auto;    
@@ -82,5 +84,5 @@
         p {
             margin: 1.5rem 0;
         }
-    }
-}
+    }    
+`;

@@ -7,7 +7,7 @@ import { api } from '../../services/api';
 import Link from 'next/link';
 import { convertDurationToTimeString } from '../../utils/convertDurationToTimeString';
 
-import styles from './episode.module.scss';
+import * as S from './episode.module';
 import { usePlayer } from '../../contexts/PlayerContext';
 import React, { ReactNode } from 'react';
 import { IconContext } from 'react-icons';
@@ -52,12 +52,12 @@ export default function Episode({ episode }: EpisodeProps) {
     }
 
     return (
-       <div className={styles.episode}>
+       <S.Episode>
             <Head>
                 <title>{episode.title}</title>
             </Head>
 
-           <div className={styles.thumbnailContainer}>
+           <div className="thumbnailContainer">
                <Link href="/"> 
                 <button type="button">
                     <img src="/arrow-left.svg" alt="Voltar"/>
@@ -84,11 +84,11 @@ export default function Episode({ episode }: EpisodeProps) {
            </header>
 
            <div 
-                className={styles.description} 
+                className="description" 
                 dangerouslySetInnerHTML={{ __html: episode.description }} // utilizar para prevenir ataques no HTML, é o substituto do innerHTML. Em geral, adicionar HTML através de código é arriscado, podendo sofrer um ataque cross-site scripting
             />
                 
-       </div>
+       </S.Episode>
     )
 }
 

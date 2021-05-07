@@ -21,7 +21,9 @@ import Link from 'next/link';
 import ptBR from 'date-fns/locale/pt-BR';
 import { convertDurationToTimeString } from '../utils/convertDurationToTimeString';
 
-import styles from './home.module.scss'
+import * as S from './home.module';
+
+
 import { usePlayer } from '../contexts/PlayerContext';
 import { ReactNode } from 'react';
 
@@ -72,12 +74,12 @@ export default function Home({ latestEpisodes, allEpisodes  }: HomeProps){
     }
 
     return(
-        <div className={styles.homepage}>
+        <S.HomePage>
             <Head>
                 <title>Home | Podcastr</title>
             </Head>
 
-            <section className={styles.latestEpisodes}>
+            <S.LatestEpisodes>
                 <h2>Últimos lançamento</h2>
 
                 <ul>
@@ -95,7 +97,7 @@ export default function Home({ latestEpisodes, allEpisodes  }: HomeProps){
 
                                 {/* No next ele utiliza o componente IMAGE esse componente para renderizar e otimizar imagens */}
                                 
-                                <div className={styles.episodeDetails}>
+                                <S.EpisodeDetails>
                                    <Link href={`/episodes/${episode.id}`}>
                                     <a>{episode.title}</a>
                                    </Link>
@@ -107,7 +109,7 @@ export default function Home({ latestEpisodes, allEpisodes  }: HomeProps){
                                    <span>{episode.publishedAt}</span>
                                    <span>{episode.durationAsString}</span>
 
-                                </div>                        
+                                </S.EpisodeDetails>                        
 
                                 <button type="button" onClick={() => playList(episodeList, index)}>
                                     {getIconPlayEpisode(index)}
@@ -116,9 +118,9 @@ export default function Home({ latestEpisodes, allEpisodes  }: HomeProps){
                         )
                     })}
                 </ul>
-            </section>
+            </S.LatestEpisodes>
 
-            <section className={styles.allEpisodes}>
+            <S.AllEpisodes>
                <h2>Todos episódios</h2>
 
                <table cellSpacing={0}>
@@ -171,8 +173,8 @@ export default function Home({ latestEpisodes, allEpisodes  }: HomeProps){
 
                </table>
             
-            </section>            
-        </div>
+            </S.AllEpisodes>            
+        </S.HomePage>
 
     )
 }
