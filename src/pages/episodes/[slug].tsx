@@ -43,7 +43,7 @@ export default function Episode({ episode }: EpisodeProps) {
     function greenIconStop() {
         return (
           <IconContext.Provider
-            value={{ color: 'var(--white)', size: '1.5rem' }}>
+            value={{ color: `${props => props.theme.colors.default}`, size: '1.5rem' }}>
             <div>
               <FaRegStopCircle />
             </div>

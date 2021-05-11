@@ -45,7 +45,7 @@ export const Episode = styled.div `
 
     header { 
         padding-bottom: 1rem;
-        border-bottom: 1px solid var(--gray-100);
+        border-bottom: 1px solid ${props => props.theme.colors.gray100};
 
         h1 { 
             margin-top: 2rem;
@@ -79,7 +79,7 @@ export const Episode = styled.div `
     .description {
         margin-top: 2rem;
         line-height: 1.675rem;
-        color: var(--gray-800);
+        color: ${props => props.theme.colors.gray800};
 
         p {
             margin: 1.5rem 0;

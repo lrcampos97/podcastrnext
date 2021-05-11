@@ -15,7 +15,7 @@ import Image from 'next/image';
 import Head from 'next/head'; 
 import { format, parseISO } from 'date-fns';
 import { api } from '../services/api';
-import { FaBeer, FaRegStopCircle } from 'react-icons/fa';
+import { FaRegStopCircle } from 'react-icons/fa';
 import { IconContext } from "react-icons";
 import Link from 'next/link';
 import ptBR from 'date-fns/locale/pt-BR';
